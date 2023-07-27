@@ -1,7 +1,11 @@
 datasource db {
   provider = "mysql"
-  url      = "mysql://root:@127.0.0.1:3306/learn_prisma_db"
+  url      = env("PRISMA_MYSQL_URL")
 }
+generator client {
+  provider = "prisma-client-js"
+}
+
 
 model Categories {
   id      Int        @id @unique @default(autoincrement())
@@ -49,6 +53,3 @@ model Pictures {
   url       String
 }
 
-generator client {
-  provider = "prisma-client-js"
-}
