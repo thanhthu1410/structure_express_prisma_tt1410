@@ -4,8 +4,6 @@ dotenv.config();
 // tao server
 import express from  'express';
 const server = express();
-import {mysqlConnect} from './databases/mySQL'
-mysqlConnect()
 
 /* Body Parser Middleware*/
 import bodyParser from 'body-parser';
