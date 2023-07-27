@@ -39,7 +39,7 @@ module.exports = {
             return {
                 status: true,
                 message: status == undefined ? "get all successfull" : `lay danh muc ${status ? " dang hoat dong" : "da dung hoat dong"} thanh cong`,
-                results: categories
+                data: categories
             }
 
         } catch (err) {
@@ -51,6 +51,7 @@ module.exports = {
         }
     },
     update: async function (categoryId, categoryEditData) {
+
         try {
             let categoryEdited = await prisma.Categories.update({
                 where: {
@@ -58,6 +59,7 @@ module.exports = {
                 },
                 data: categoryEditData
             })
+            console.log("categoryEdited",categoryEdited.data);
             return {
                 status: true,
                 message: 'update successfull!',
@@ -65,7 +67,7 @@ module.exports = {
             }
 
         } catch (err) {
-            console.log(err)
+            console.log("err model category",err)
             return {
                 status: false,
                 message: "Lỗi không xác định!"
